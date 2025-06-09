@@ -1,20 +1,15 @@
-pipeline {
- agent any
- tools {
- maven 'Maven3' // Maven tool defined in Jenkins
- }
- stages {
- stage('Build') {
- steps {
- sh 'mvn clean install'
- }
- }
- stage('SonarQube Analysis') {
- steps {
- withSonarQubeEnv('My SonarQube Server') {
- sh 'mvn sonar:sonar'
- }
- }
- }
- }
-}
+     pipeline {
+        agent none
+        stages {
+         
+          stage("build & sonarqube") {
+            agent any
+            steps {
+              withSonarQubeEnv('My SonarQube Server') {
+                sh 'mvn clean package sonar:sonar'
+              }
+            }
+            
+          }
+        }
+      }
