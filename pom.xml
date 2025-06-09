@@ -78,6 +78,7 @@
     </pluginManagement>
   </build>
   <profiles>
+  
         <profile>
             <id>sonar</id>
             <activation>
